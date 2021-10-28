@@ -111,16 +111,19 @@
 </body>
 <script src="./assets/Js/app.js"></script>
 <script>
-    const successCallback = (position) => {
-        console.log(position);
-    }
-    
-    const errorCallback = (error) => {
-        console.error(error);
-    }
-    
-    const UserLocation = () => {
-        navigator.geolocation.getCurrentLocation(successCallback, errorCallback)
-    }
+ var x = document.getElementById("demo");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+
 </script>
 </html>
